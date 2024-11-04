@@ -9,4 +9,8 @@
     script: 'Get-ChildItem -Path ''$(Agent.BuildDirectory)'' -recurse'
 ```
 
-## MORE NEEDED!
+## Powershell script to wait for user input
+```
+Write-Host -NoNewLine 'Press any key to continue...';
+$null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+```
