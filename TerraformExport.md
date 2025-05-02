@@ -8,14 +8,18 @@ The link it gave me to update wasn't very helpful, so I went to winget:
 
 Running `terraform --version` gave me the same error as before, and I couldn't see it in my PATH variables.
 
-Running `where.exe terraform` told me where it was located. I had previously installed it with chocolatey.
+Running `where.exe terraform` told me where it was located (note: this is for Windows). I had previously installed it with chocolatey.
 
 Chocolatey blocked me from uninstalling it via commands, so I just went to the folder "where.exe" listed, and deleted the terraform.exe folder.
 
 **Take away:** to avoid this kind of problem I'd highly recommend using just 1 method on your OS to manage all packages. Since I had considerably more outside of Chocolatey I decided to continue using winget. Also I prefer the terminal responses, Chocolatey gets a bit too messy for my liking.
 </details>
 
+## Installing aztfexport
+The Microsoft Learn page takes you to the artifacts page of the GitHub repository, but honestly it's much easier if you just follow the instructions [inside the repo](https://github.com/Azure/aztfexport) for your operating system.
+
 ## Log in via your terminal
+You'll also need the Azure CLI installed locally for this.
 `az login`
 
 ## Show which subscription you're currently using
@@ -31,7 +35,7 @@ Chocolatey blocked me from uninstalling it via commands, so I just went to the f
 `az group list`
 
 ## Export your resource group
-`aztfexport resource-group rg-fitboss-site`
+`aztfexport resource-group <resource group name>`
 Then press "W" to "acquire" the listed resources locally in Terraform format.
 
 The wording is confusing because it says "import", I guess it means you're importing locally, but it makes more sense in my head if you "export" it from Azure. The Microsoft Learn docs say "export".
@@ -120,4 +124,8 @@ So I changed the name, then ran `terraform plan`, which told me it was going to 
 My next thought is that if I remove these config map resources from the Terraform file they'll be ignored and handled in some default way.
 Running `terraform plan` then tells me it's going to delete them completely...
 I'll have to accept this for now, and observe what it does when I create an Azure Container Registry straight from Terraform, hopefully it will just sort the default out itself.
+
+### Hostname binding resource already exists
+From what I can establish, when you create an App Service resource, it sets up the hostname for you, so if you get any "azurerm_app_service_custom_hostname_binding" resources generated, they should be safe to delete.
+
 </details>
