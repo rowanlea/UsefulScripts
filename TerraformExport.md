@@ -1,6 +1,7 @@
 # Exporting Azure Resources To Terraform
 <details>
 <summary>Fixing Terraform: a personal note about fixing my install</summary>
+
 Running `terraform --version` showed it was installed, but told me it was out of date, and to update.
 
 The link it gave me to update wasn't very helpful, so I went to winget:
@@ -77,6 +78,7 @@ When I first ran this I got a load of errors the tool generates out of the box.
 
 <details>
 <summary>List of errors you could encounter</summary>
+
 ### alpha numeric characters and hyphens only are allowed in "name"
 Run this script to remove all _ from name values
 TODO
