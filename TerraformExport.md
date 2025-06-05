@@ -35,8 +35,12 @@ You'll also need the Azure CLI installed locally for this.
 ## Show which resource groups you have access to, to double check
 `az group list`
 
-## Export your resource group
+## Export your resources
+### Export a resource group
 `aztfexport resource-group <resource group name>` (note: resource group name is case sensitive), then press "W" to "acquire" the listed resources locally in Terraform format. It says "import", but it means "export".
+
+### Export an individual resource
+**Note:** I wouldn't recommend doing an individual resource. Often resources have supporting resources/dependencies that this misses, things like config that aren't actually Azure Resources, but are Terraform resources.
 
 You can also export an individual resource, by calling `aztfexport resource <resource ID>`. To get the resource ID, go to the resource, then go to Settings->Properties, and it's listed there. Note that the entry includes a whole sub-path including the subscription and resource group location - it needs this whole things as the ID.
 
