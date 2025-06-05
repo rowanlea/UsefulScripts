@@ -38,6 +38,8 @@ You'll also need the Azure CLI installed locally for this.
 ## Export your resource group
 `aztfexport resource-group <resource group name>` (note: resource group name is case sensitive), then press "W" to "acquire" the listed resources locally in Terraform format. It says "import", but it means "export".
 
+You can also export an individual resource, by calling `aztfexport resource <resource ID>`. To get the resource ID, go to the resource, then go to Settings->Properties, and it's listed there. Note that the entry includes a whole sub-path including the subscription and resource group location - it needs this whole things as the ID.
+
 ## Verifying it worked
 `terraform init --upgrade`
 This command downloads the Azure provider required to manage your Azure resources. Upgrade ensures the provider plugins are the highest version they can be, that still meets your specific configuration.
