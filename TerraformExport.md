@@ -36,12 +36,7 @@ You'll also need the Azure CLI installed locally for this.
 `az group list`
 
 ## Export your resource group
-`aztfexport resource-group <resource group name>`
-Then press "W" to "acquire" the listed resources locally in Terraform format.
-
-The wording is confusing because it says "import", I guess it means you're importing locally, but it makes more sense in my head if you "export" it from Azure. The Microsoft Learn docs say "export".
-
-The console looked weird for me here, as there was a 95% loading bar at the bottom, but wording at the top that it had been finished. Following the next section can verify it all worked anyway.
+`aztfexport resource-group <resource group name>` (note: resource group name is case sensitive), then press "W" to "acquire" the listed resources locally in Terraform format. It says "import", but it means "export".
 
 ## Verifying it worked
 `terraform init --upgrade`
@@ -51,7 +46,7 @@ This command downloads the Azure provider required to manage your Azure resource
 
 If the terminal outputs No changes needed, then congratulations!
 
-**Note:** from my experience it's unlikely to report this. The tool is so flaky it will always report changes.
+**Note:** from my experience it's unlikely to report this. Azure Terraform generation is so flaky that it will always report changes.
 
 ## Deploying and removing
 You can deploy with `terraform apply main.tfplan` after you've done the plan.
